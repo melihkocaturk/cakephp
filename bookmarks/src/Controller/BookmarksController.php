@@ -111,4 +111,9 @@ class BookmarksController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function export($limit = 100) {
+        $bookmarks = $this->Bookmarks->find('all')->limit($limit);
+        $this->set('boomarks',$bookmarks);
+    }
 }
