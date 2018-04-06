@@ -33,6 +33,10 @@
             <td><?= h($bookmark->url) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('# Of Tags') ?></th>
+            <td><?= $this->Number->format($bookmark->numberOfTags()) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($bookmark->id) ?></td>
         </tr>
