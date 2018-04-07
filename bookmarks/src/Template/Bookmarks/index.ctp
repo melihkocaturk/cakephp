@@ -35,7 +35,7 @@
                 <td><?= $this->Number->format($bookmark->id) ?></td>
                 <td><?= $bookmark->has('user') ? $this->Html->link($bookmark->user->id, ['controller' => 'Users', 'action' => 'view', $bookmark->user->id]) : '' ?></td>
                 <td><?= h($bookmark->title) ?></td>
-                <td><?= h($bookmark->url) ?></td>
+                <td><?= $this->element('Bookmarks/url', ['bookmark' => $bookmark]); ?></td>
                 <td><?= $this->Number->format($bookmark->numberOfTags()) ?></td>
                 <td><?= h($bookmark->created) ?></td>
                 <td><?= h($bookmark->modified) ?></td>

@@ -1,0 +1,1 @@
+<a href="<?= h($bookmark->url) ?>" target="blank"><?= h($bookmark->url) ?></a>
