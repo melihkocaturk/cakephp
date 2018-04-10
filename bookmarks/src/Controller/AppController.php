@@ -43,6 +43,12 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => ['fields' => ['username' => 'email']]
+            ],
+            'authorize' => ['Controller'],
+        ]);
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -50,5 +56,13 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+    }
+
+    public function isAuthorized($user)
+    {
+        if (isset($this->request->params['prefix']) && 'admin' == $this->request->params['prefix']) {
+            return ($user['email'] == 'melihkocaturk@gmail.com');
+        }
+        return true;
     }
 }
