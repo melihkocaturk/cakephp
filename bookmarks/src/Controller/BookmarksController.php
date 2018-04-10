@@ -125,11 +125,11 @@ class BookmarksController extends AppController
         $limit = $this->UrlValidate->validLimit($limit, 100);
         $bookmarks = $this->Bookmarks
             ->find('forUser', ['user_id' => 1])
-            ->limit($limit)
-            // ->where(['user_id' => 1])
-            ->contain(['Tags' => function ($q) {
-                return $q->where(['Tags.name LIKE' => '%t%']);
-            }]);
-        $this->set('boomarks',$bookmarks);
+            ->limit($limit);
+
+        $_serialize = 'bookmarks';
+
+        $this->viewBuilder()->className('CsvView.Csv');
+        $this->set(compact('bookmarks', '_serialize'));
     }
 }
